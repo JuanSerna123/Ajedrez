@@ -18,6 +18,20 @@ public class Rey extends Ficha{
         int columnaDestino = destino.getColumna();
         int direccion = (getColorFicha() == ColorFicha.BLANCO)? 1 : -1;
 
+        if ((filaDestino == filaActual - 1 && columnaDestino == columnaActual) ||
+                (filaDestino == filaActual + 1 && columnaDestino == columnaActual) ||
+                (filaDestino == filaActual && columnaDestino == columnaActual - 1) ||
+                (filaDestino == filaActual && columnaDestino == columnaActual + 1) ||
+                (filaDestino == filaActual - 1 && columnaDestino == columnaActual - 1) ||
+                (filaDestino == filaActual - 1 && columnaDestino == columnaActual + 1) ||
+                (filaDestino == filaActual + 1 && columnaDestino == columnaActual - 1) ||
+                (filaDestino == filaActual + 1 && columnaDestino == columnaActual + 1)) {
+
+            if (tablero.getTablero()[filaDestino][columnaDestino] == null ||
+                    !tablero.getTablero()[filaDestino][columnaDestino].getColorFicha().equals(this.colorFicha)) {
+                return true;
+            }
+        }
         return false;
     }
 }

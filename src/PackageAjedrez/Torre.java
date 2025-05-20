@@ -25,7 +25,8 @@ public class Torre extends Ficha {
                         return false;
                     }
                 }
-                if(tablero.getTablero()[destino.getFila()][destino.getColumna()] == null || !tablero.getTablero() [destino.getFila()][destino.getColumna()].getColorFicha().equals(this.colorFicha))
+                if(tablero.getTablero()[destino.getFila()][destino.getColumna()] == null ||
+                        !tablero.getTablero() [destino.getFila()][destino.getColumna()].getColorFicha().equals(this.colorFicha))
                     return true;
             }
             else{
@@ -34,7 +35,8 @@ public class Torre extends Ficha {
                         return false;
                     }
                 }
-                if(tablero.getTablero()[destino.getFila()][destino.getColumna()] == null || !tablero.getTablero() [destino.getFila()][destino.getColumna()].getColorFicha().equals(this.colorFicha))
+                if(tablero.getTablero()[destino.getFila()][destino.getColumna()] == null ||
+                        !tablero.getTablero() [destino.getFila()][destino.getColumna()].getColorFicha().equals(this.colorFicha))
                     return true;
             }
         }
@@ -45,7 +47,8 @@ public class Torre extends Ficha {
                         return false;
                     }
                 }
-                if(tablero.getTablero()[destino.getFila()][destino.getColumna()] == null || !tablero.getTablero() [destino.getFila()][destino.getColumna()].getColorFicha().equals(this.colorFicha))
+                if(tablero.getTablero()[destino.getFila()][destino.getColumna()] == null ||
+                        !tablero.getTablero() [destino.getFila()][destino.getColumna()].getColorFicha().equals(this.colorFicha))
                     return true;
             }
             else{
@@ -54,7 +57,8 @@ public class Torre extends Ficha {
                         return false;
                     }
                 }
-                if(tablero.getTablero()[destino.getFila()][destino.getColumna()] == null || !tablero.getTablero() [destino.getFila()][destino.getColumna()].getColorFicha().equals(this.colorFicha))
+                if(tablero.getTablero()[destino.getFila()][destino.getColumna()] == null ||
+                        !tablero.getTablero() [destino.getFila()][destino.getColumna()].getColorFicha().equals(this.colorFicha))
                     return true;
             }
 
