@@ -1,24 +1,30 @@
 package PackageAjedrez;
 import java.util.Scanner;
+//obtengo la entreda del usuario
 
 public class Juego {
     private Tablero tablero;
     private ColorFicha turnoActual;
     private boolean juegoTerminado;
+    //variable booleana y será true cuando el juego haya finalizado.
+
 
     public Juego() {
         tablero = new Tablero();
         turnoActual = ColorFicha.BLANCO;
         juegoTerminado = false;
         inicializarPosicionesFichas();
+        //empiezan las fichas blancas
+        //juegoTerminado empezamos con false, ya que el juego acaba de empezar.
+        // sele da la posicion correcta a cada ficha
     }
 
     private void inicializarPosicionesFichas() {
-        for (int fila = 0; fila < 8; fila++) {
-            for (int columna = 0; columna < 8; columna++) {
-                Ficha ficha = tablero.getTablero()[fila][columna];
-                if (ficha != null) {
-                    ficha.setPosicion(new Posicion(fila, columna));
+        for (int fila = 0; fila < 8; fila++) { // itera cada fila del tablero
+            for (int columna = 0; columna < 8; columna++) {  //itera cada columna del tablero
+                Ficha ficha = tablero.getTablero()[fila][columna]; //Obtiene la referencia a la Ficha en la posición actual
+                if (ficha != null) { //Comprueba si realmente hay una ficha en esta posición
+                    ficha.setPosicion(new Posicion(fila, columna));//  Si hay una ficha, le asigna un nuevo objeto Posicion con sus cordenadas actuales.
                 }
             }
         }
@@ -28,14 +34,18 @@ public class Juego {
         Scanner scanner = new Scanner(System.in);
         while (!juegoTerminado) {
             imprimirTablero();
-            System.out.println("Turno de las " + turnoActual + ".");
+            System.out.println("Turno de las " + turnoActual + ".");// dice de qué color es el turno actual.
+            //Se ejecutará mientras la variable juegoTerminado sea false.
+
+             //solicitar estos datos en la terminal
             System.out.println("Ingresa la fila de la ficha a mover (0-7):");
             int filaOrigen = scanner.nextInt();
             System.out.println("Ingresa la columna de la ficha a mover (0-7):");
             int columnaOrigen = scanner.nextInt();
+            //nextInt Lee el número de la columna de origen introducido
 
             Posicion origen = new Posicion(filaOrigen, columnaOrigen);
-
+             // Validación para asegurar que las coordenadas de origen estén dentro del rango del tablero
             if (filaOrigen < 0 || filaOrigen > 7 || columnaOrigen < 0 || columnaOrigen > 7) {
                 System.out.println("Posición de origen inválida. Las coordenadas deben ser entre 0 y 7.");
                 continue;
@@ -43,7 +53,7 @@ public class Juego {
 
 
             Ficha fichaSeleccionada = tablero.getTablero()[filaOrigen][columnaOrigen];
-
+            // Validación para asegurar que hay una ficha en la posición de origen Y que pertenece al jugador del turno actual.
             if (fichaSeleccionada == null || !fichaSeleccionada.getColorFicha().equals(turnoActual)) {
                 System.out.println("Movimiento inválido. No hay ficha en esa posición o no es tu turno.");
                 continue;
@@ -68,6 +78,7 @@ public class Juego {
                     System.out.println("¡Jaque al Rey! Las " + turnoActual + " han ganado el juego.");
                     juegoTerminado = true;
                     break;
+                    // Comprueba si la ficha que estaba en la posición de destino y que ahora será capturada es un 'Rey'.
                 }
 
                 tablero.getTablero()[filaDestino][columnaDestino] = fichaSeleccionada;
