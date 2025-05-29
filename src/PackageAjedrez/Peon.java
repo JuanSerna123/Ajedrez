@@ -8,10 +8,6 @@ public class Peon extends Ficha {
 
     @Override
     public boolean mover(Posicion destino, Tablero tablero) {
-
-
-        boolean posicionDentroDelTablero = this.validarPosicionDentroDelTablero(destino);
-
         if (getPosicion() == null || destino == null) {
             return false;
         }
@@ -22,22 +18,27 @@ public class Peon extends Ficha {
         int columnaDestino = destino.getColumna();
         int direccion = (getColorFicha() == ColorFicha.BLANCO) ? 1 : -1;
 
-        if (ColorFicha.BLANCO.equals(this.colorFicha) && this.getPosicion().getFila() == 6) {
-            if ((filaDestino == 4 || filaDestino == 5) && tablero.getTablero()[destino.getFila()][destino.getColumna()] == null)
-                return true;
-        } else if (filaDestino == this.getPosicion().getFila() - 1 && ColorFicha.BLANCO.equals(this.colorFicha) && columnaDestino == getPosicion().getColumna())
-            return true;
-        if (tablero.getTablero()[destino.getFila()][destino.getColumna()].colorFicha.equals(ColorFicha.NEGRO) && this.getPosicion().getColumna() - 1 == destino.getColumna() + 1)
-            return true;
+        if (!validarPosicionDentroDelTablero(destino)) {
+            return false;
+        }
 
-        if (ColorFicha.NEGRO.equals(this.colorFicha) && this.getPosicion().getFila() == 1) {
-            if ((filaDestino == 2 || filaDestino == 3) && tablero.getTablero()[destino.getFila()][destino.getColumna()] == null)
+        if (columnaDestino == columnaActual) {
+            if (filaDestino == filaActual + direccion && tablero.getTablero()[filaDestino][columnaDestino] == null) {
                 return true;
-        } else if (filaDestino == this.getPosicion().getFila() + 1 && ColorFicha.NEGRO.equals(this.colorFicha) && columnaDestino == getPosicion().getColumna())
-            return true;
-        if (tablero.getTablero()[destino.getFila()][destino.getColumna()].colorFicha.equals(ColorFicha.BLANCO) && this.getPosicion().getColumna() - 1 == destino.getColumna() + 1)
-            return true;
+            }
+            if ((filaActual == 1 && getColorFicha() == ColorFicha.BLANCO && filaDestino == filaActual + 2 && tablero.getTablero()[filaActual + 1][columnaActual] == null && tablero.getTablero()[filaDestino][columnaDestino] == null) ||
+                    (filaActual == 6 && getColorFicha() == ColorFicha.NEGRO && filaDestino == filaActual - 2 && tablero.getTablero()[filaActual - 1][columnaActual] == null && tablero.getTablero()[filaDestino][columnaDestino] == null)) {
+                return true;
+            }
+        }
+
+        if (Math.abs(columnaDestino - columnaActual) == 1 && filaDestino == filaActual + direccion) {
+            Ficha fichaEnDestino = tablero.getTablero()[filaDestino][columnaDestino];
+            if (fichaEnDestino != null && fichaEnDestino.getColorFicha() != this.getColorFicha()) {
+                return true;
+            }
+        }
+
         return false;
     }
-
 }

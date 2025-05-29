@@ -6,8 +6,6 @@ public class Juego {
     private Tablero tablero;
     private ColorFicha turnoActual;
     private boolean juegoTerminado;
-    //variable booleana y será true cuando el juego haya finalizado.
-
 
     public Juego() {
         tablero = new Tablero();
