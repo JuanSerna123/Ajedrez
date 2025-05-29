@@ -15,11 +15,11 @@ public class Juego {
     }
 
     private void inicializarPosicionesFichas() {
-        for (int fila = 0; fila < 8; fila++) { // itera cada fila del tablero
-            for (int columna = 0; columna < 8; columna++) {  //itera cada columna del tablero
-                Ficha ficha = tablero.getTablero()[fila][columna]; //Obtiene la referencia a la Ficha en la posición actual
-                if (ficha != null) { //Comprueba si realmente hay una ficha en esta posición
-                    ficha.setPosicion(new Posicion(fila, columna));//  Si hay una ficha, le asigna un nuevo objeto Posicion con sus cordenadas actuales.
+        for (int fila = 0; fila < 8; fila++) {
+            for (int columna = 0; columna < 8; columna++) {
+                Ficha ficha = tablero.getTablero()[fila][columna];
+                if (ficha != null) {
+                    ficha.setPosicion(new Posicion(fila, columna));
                 }
             }
         }
