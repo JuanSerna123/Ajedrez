@@ -93,32 +93,32 @@ public class Juego {
     }
 
     private void imprimirTablero() {
-        System.out.println("  0 1 2 3 4 5 6 7");
+        System.out.println("    0  1  2  3  4  5  6  7");
         System.out.println("-----------------");
         for (int i = 0; i < 8; i++) {
             System.out.print(i + "|");
             for (int j = 0; j < 8; j++) {
                 Ficha ficha = tablero.getTablero()[i][j];
                 if (ficha == null) {
-                    System.out.print("  ");
+                    System.out.print(" _ ");
                 } else {
-                    String representacion = "";
+                    String representacion = " ";
                     if (ficha.getColorFicha() == ColorFicha.BLANCO) {
-                        if (ficha instanceof Peon) representacion = "PB";
-                        else if (ficha instanceof Torre) representacion = "TB";
-                        else if (ficha instanceof Caballo) representacion = "CB";
-                        else if (ficha instanceof Alfil) representacion = "AB";
-                        else if (ficha instanceof Reina) representacion = "QB";
-                        else if (ficha instanceof Rey) representacion = "RB";
+                        if (ficha instanceof Peon) representacion = " PB";
+                        else if (ficha instanceof Torre) representacion = " TB";
+                        else if (ficha instanceof Caballo) representacion = " CB";
+                        else if (ficha instanceof Alfil) representacion = " AB";
+                        else if (ficha instanceof Reina) representacion = " QB";
+                        else if (ficha instanceof Rey) representacion = " RB";
                     } else {
-                        if (ficha instanceof Peon) representacion = "PN";
-                        else if (ficha instanceof Torre) representacion = "TN";
-                        else if (ficha instanceof Caballo) representacion = "CN";
-                        else if (ficha instanceof Alfil) representacion = "AN";
-                        else if (ficha instanceof Reina) representacion = "QN";
-                        else if (ficha instanceof Rey) representacion = "RN";
+                        if (ficha instanceof Peon) representacion = " PN";
+                        else if (ficha instanceof Torre) representacion = " TN";
+                        else if (ficha instanceof Caballo) representacion = " CN";
+                        else if (ficha instanceof Alfil) representacion = " AN";
+                        else if (ficha instanceof Reina) representacion = " QN";
+                        else if (ficha instanceof Rey) representacion = " RN";
                     }
-                    System.out.print(representacion.charAt(0) + "" + (ficha.getColorFicha() == ColorFicha.BLANCO ? "B" : "N") + "");
+                    System.out.print(representacion);
                 }
             }
             System.out.println();
